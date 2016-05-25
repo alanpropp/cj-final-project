@@ -46,7 +46,7 @@ There is an interactive map where users can click on specific cities within LA C
 
 ##Profile Directory
 If the user opens a full profile summary of a specific area, they see a page with a variety of graphs and charts to see how that area uses energy by a variety of different metrics (all interactive)
-![image Profile_Directory.png](assets/Profile_Directory.png)
+![image Profile_Directory.png](https://github.com/alanpropp/cj-final-project/blob/master/Assets/Profile_Directory.png)
 
 
 ##Table
