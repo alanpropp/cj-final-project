@@ -24,6 +24,7 @@ Los Angeles is an enormous consumer of energy, making it a very interesting case
 	* Clicking on any specific data point automatically zooms without me wanting it to
 	* Images don't seem to work, information is minimal
 	* Overall very basic and not super informative
+
 #Data
 ##Data Sources
 1. The data is from the various utilities in Los Angeles County, both IOU's and MOU's.
