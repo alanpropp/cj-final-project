@@ -6,9 +6,9 @@ Los Angeles is an enormous consumer of energy, making it a very interesting case
 
 ##Inspirations and prior work
 * [Georgia's Energy Data Visualizer](http://www.georgiaenergydata.org/electricityproduction)
-⋅⋅*  Great visualization of complex energy production data using visually appealing icons and colors.
-⋅⋅* Good graph as well showing installed capacity.
-⋅⋅* However, the search bar isn't well explained and doesn't seem to work (?)
+••*  Great visualization of complex energy production data using visually appealing icons and colors.
+••* Good graph as well showing installed capacity.
+••* However, the search bar isn't well explained and doesn't seem to work (?)
 
 * [USGS Energy Vision](http://certmapper.cr.usgs.gov/data/energyvision/)
 ⋅⋅* Customizable base map is useful, as is ability to add layers.
