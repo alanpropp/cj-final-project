@@ -40,8 +40,8 @@ Users can filter in a variety of different ways. This includes:
 #Views and Routes
 ##Map
 There is an interactive map where users can click on specific cities within LA County to open a pop-up window with more specifics. The map is layered with colors based on consumption
-![image Map.png](assets/Map.png)
-![image PopUp.png](assets/PopUp.png)
+![image Map.png](https://github.com/alanpropp/cj-final-project/blob/master/Assets/Map.png)
+![image PopUp.png](https://github.com/alanpropp/cj-final-project/blob/master/Assets/PopUp.png)
 
 
 ##Profile Directory
@@ -51,4 +51,4 @@ If the user opens a full profile summary of a specific area, they see a page wit
 
 ##Table
 Same information as the map, but different visualization. Here, we can sort the county medians based on any metric you want, compare between county medians, AND see/compare multiple customizable information about specific county medians simultaneously. The data is downloadable from here as well
-![image Table.png](assets/Table.png)
+![image Table.png](https://github.com/alanpropp/cj-final-project/blob/master/Assets/Table.png)
