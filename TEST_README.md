@@ -14,6 +14,16 @@ Los Angeles is an enormous consumer of energy, making it a very interesting case
 	* Customizable base map is useful, as is ability to add layers.
 	* No way for user to search anything other than checkboxes, rendering any user curiosity useless.
 
+* [Talking Points Memom - look at energy policy scenarios](http://talkingpointsmemo.com/this-chart/interactive-us-energy-data)
+	* Doesn't get to the point until the bottom
+	* I never like the tables that you have to scroll down through WITHIN the main page
+	* Labels are confusing
+	* Good to have so many different ways of visualizing/comparing data, and so many different customization possibilities
+* [Europe Renewable Energy Click Map](http://rwe-renewableslive.com/#/maptech/WN/DE/0)
+	* Almost no information provided on the page besides map and slider bars
+	* Clicking on any specific data point automatically zooms without me wanting it to
+	* Images don't seem to work, information is minimal
+	* Overall very basic and not super informative
 #Data
 ##Data Sources
 1. The data is from the various utilities in Los Angeles County, both IOU's and MOU's.
