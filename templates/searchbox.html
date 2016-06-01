@@ -1,0 +1,6 @@
+<input type =  "text" list = "countries" name = "country">
+<datalist id = "countries">
+	{% for nation in nations %}
+		<option value = "{{nation}}">
+	{% endfor %}
+</datalist>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search results</title>
+  <!-- <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}"> -->
+</head>
+<body>
+
+  <p>Go back to <a href="{{url_for('homepage')}}">homepage</a></p>
+
+  <p>Here is the information for {{nation}}</p>
+
+<style>
+ table, th, td {
+    border: 1px solid black;
+}
+</style>
+
+  <table>
+    <thead>
+        <tr>
+          <th>Country</th>
+        {% for year in years %}
+          <th>{{year}}</th>
+        {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td> {{nation}}</td>
+        {% for arg in argument %}
+          <td> {{arg}} </td>
+        {% endfor %}
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Country Energy Information</title>
+</head>
+<body>
+
+  <form action="{{url_for('results')}}" method="get">
+
+  <h3>Enter in the name of a country or region to find its energy information</h3>
+
+  {% include 'searchbox.html' %}
+
+  <h3>Select a metric you want to view for the country</h3>
+  {% include 'options.html' %}
+
+  <h3> Select whether you would like the information per capita or total</h3>
+  	<input type="radio" name="units" value="per_capita"> Per Capita
+	<input type="radio" name="units" value="total"> Total
+
+	<p>
+
+	<input type="submit" value="Submit">
+
+	</p>
+	</form>
+
+</body>
+</html>
