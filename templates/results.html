@@ -24,20 +24,28 @@ $(function () {
             x: -20
         },
         xAxis: {
-
-            categories:   {{ years | tojson }}             
-            
+            categories:   {{ years | tojson }}
         },
         yAxis: [{
             title: {
-                text: '{{units}} {{metric}}'
+                text: '{{metric}}'
             },
             plotLines: [{
                 value: 0,
                 width: 1,
                 color: Highcharts.getOptions().colors[1]
-            }]
-        }, {
+            }],
+        }, 
+        {
+            title: {
+                text: 'Per Capita'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: Highcharts.getOptions().colors[2]
+            }],
+        },{
             title: {
               text: 'Population'
           },
@@ -45,12 +53,9 @@ $(function () {
                 value: 0,
                 width: 1,
                 color: Highcharts.getOptions().colors[2]
-            }]
-
-        }]
-        tooltip: {
-            valueSuffix: ' {{metric_units}}'
-        },
+            }],
+            opposite: true
+        }],
         legend: {
             layout: 'vertical',
             align: 'right',
@@ -58,11 +63,24 @@ $(function () {
             borderWidth: 0
         },
         series: [{
-            name: '{{nation}}',
-            data: {{ argument | tojson }}
+            name: '{{nation}} usage',
+            data: {{ argument | tojson }},
+            tooltip: {
+              valueSuffix: ' {{metric_units}}'
+            }
         },{
-            name: 'Population'
-            data: {{ population | tojson}}
+            name: '{{nation}} population',
+            data: {{ population | tojson}},
+            tooltip: {
+              valueSuffix: ' million people'
+            }
+        },
+        {
+            name: '{{nation}} usage per capita',
+            data: {{ per_capita | tojson}},
+            tooltip: {
+              valueSuffix: ' {{metric_units}} per capita'
+            }
         }]
     });
 });
@@ -88,7 +106,7 @@ $(function () {
     </div>
 
     {% if "{{percentage}}" != 0 %}
-      <h4>{{nation}}'s {{units}} usage is {{percentage}}% of the world</h4>
+      <h4>{{nation}}'s usage is {{percentage}}% of the world</h4>
     {% endif %}
 
 
@@ -107,6 +125,7 @@ $(function () {
               <th>Year</th>
               <th>{{metric}} in {{metric_units}}</th>
               <th>Population</th>
+              <th>{{metric}} per capita</th>
             </tr>
         </thead>
         <tbody>
@@ -119,6 +138,7 @@ $(function () {
 
               <td>{{population[loop.index0] }} </td>
 
+              <td>{{per_capita[loop.index0] }} </td>
               </tr>
             {% endfor %}
         </tbody>

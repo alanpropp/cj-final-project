@@ -48,13 +48,12 @@ def results():
 
 
 
-    units = reqargs.get('units')
     population = []
 
     #Get the units of whatever we are doing
     metric_units = helpers.get_units(metric)
     
-    metric_units = metric_units + " per capita"
+    metric_units = metric_units
     population_overall = helpers.population()
     for p in population_overall:
         if p[''] == country:
@@ -64,21 +63,20 @@ def results():
                         population.append(float(p[y]))
                     else:
                         population.append(None)
-
-    if units == 'per capita':
-        for a in range(0,len(argument)):
-            if population[a] != None and argument[a] != None:
-                b = float(argument[a])/float(population[a])
-                argument[a] = b
-            else:
-                argument[a] = None
+    per_capita = []
+    for a in range(0,len(argument)):
+        if population[a] != None and argument[a] != None:
+            b = float(argument[a])/float(population[a])
+            per_capita.append(b)
+        else:
+            per_capita.append(None)
 
     #Time to find similar countries!
     similar_countries = helpers.find_similar_countries(information, years_list, argument, country)
     percentage = helpers.percentage_total(information, years_list, argument)
     return render_template('results.html', nation = country, argument = argument, years = years_list,
-        units = units, metric = metric, metric_units = metric_units, similar = similar_countries,
-        percentage = percentage, population = population)
+        metric = metric, metric_units = metric_units, similar = similar_countries,
+        percentage = percentage, population = population, per_capita = per_capita)
 
 
 if __name__ == '__main__':
