@@ -4,40 +4,127 @@
   <meta charset="UTF-8">
   <title>Search results</title>
   <!-- <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}"> -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+  <script type="text/javascript">
+
+
+$(function () {
+    $('#mychart').highcharts({
+        title: {
+            text: "{{nation}}",
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: Data.gov',
+            x: -20
+        },
+        xAxis: {
+
+            categories:   {{ years | tojson }}             
+            
+        },
+        yAxis: [{
+            title: {
+                text: '{{units}} {{metric}}'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: Highcharts.getOptions().colors[1]
+            }]
+        }, {
+            title: {
+              text: 'Population'
+          },
+           plotLines: [{
+                value: 0,
+                width: 1,
+                color: Highcharts.getOptions().colors[2]
+            }]
+
+        }]
+        tooltip: {
+            valueSuffix: ' {{metric_units}}'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: '{{nation}}',
+            data: {{ argument | tojson }}
+        },{
+            name: 'Population'
+            data: {{ population | tojson}}
+        }]
+    });
+});
+
+
+
+  </script>
+
+
 </head>
 <body>
 
-  <p>Go back to <a href="{{url_for('homepage')}}">homepage</a></p>
+  <div class="container">
 
-  <p>Here is the information for {{nation}}</p>
 
-<style>
- table, th, td {
-    border: 1px solid black;
-}
-</style>
 
-  <table>
-    <thead>
-        <tr>
-          <th>Country</th>
-        {% for year in years %}
-          <th>{{year}}</th>
-        {% endfor %}
-        </tr>
-    </thead>
+    <p>Go back to <a href="{{url_for('homepage')}}">homepage</a></p>
 
-    <tbody>
-      <tr>
-        <td> {{nation}}</td>
-        {% for arg in argument %}
-          <td> {{arg}} </td>
-        {% endfor %}
-      </tr>
+    <h3>Here is the information for {{nation}}'s usage of {{metric}} in {{metric_units}}</h3>
 
-    </tbody>
+    <div id="mychart">
+      chartgoes here
+    </div>
 
-  </table>
+    {% if "{{percentage}}" != 0 %}
+      <h4>{{nation}}'s {{units}} usage is {{percentage}}% of the world</h4>
+    {% endif %}
 
+
+    <br>
+
+    <h4>Similar countries in the year data was last recorded for {{nation}}</h4>
+    {% for country in similar %}
+      <p>{{country[0]}}: {{country[2]}} {{metric_units}}</p>
+    {% endfor %}
+
+    <br>
+
+      <table class="table table-condensed table-striped">
+        <thead>
+            <tr>
+              <th>Year</th>
+              <th>{{metric}} in {{metric_units}}</th>
+              <th>Population</th>
+            </tr>
+        </thead>
+        <tbody>
+     
+            {% for year in years %}
+              <tr>
+              <td>{{ years[loop.index0] }}</td>
+
+              <td>{{argument[loop.index0] }}</td>
+
+              <td>{{population[loop.index0] }} </td>
+
+              </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+
+
+    </div>
 </body>
 </html>
