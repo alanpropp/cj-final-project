@@ -24,9 +24,7 @@ $(function () {
             x: -20
         },
         xAxis: {
-
-            categories:   {{ years | tojson }}             
-            
+            categories:   {{ years | tojson }}
         },
         yAxis: [{
             title: {
@@ -47,7 +45,7 @@ $(function () {
                 color: Highcharts.getOptions().colors[2]
             }]
 
-        }]
+        }],
         tooltip: {
             valueSuffix: ' {{metric_units}}'
         },
@@ -61,7 +59,7 @@ $(function () {
             name: '{{nation}}',
             data: {{ argument | tojson }}
         },{
-            name: 'Population'
+            name: 'Population',
             data: {{ population | tojson}}
         }]
     });
@@ -110,7 +108,7 @@ $(function () {
             </tr>
         </thead>
         <tbody>
-     
+
             {% for year in years %}
               <tr>
               <td>{{ years[loop.index0] }}</td>
