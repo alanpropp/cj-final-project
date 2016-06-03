@@ -16,7 +16,9 @@ def get_countries():
     countries = []
     for row in rows:
         country = row[''] #The country column doesn't have a label - just blank
-        countries.append(country)
+        #Remove countries with negligible population
+        if row['2010']!='NA' and row['2009']!='NA' and row['2010']!='--' and row['2009']!='--':
+            countries.append(country)
     return countries
 
 def years():
@@ -25,6 +27,66 @@ def years():
         for line in f:
             years_list.append(line[0:4])
     return years_list
+
+def population_rank(country):
+    countries = get_countries()
+    population_data = population()
+    mylist = []
+    for p in population_data:
+        if p['2010']!='NA' and p['2010']!='--':
+            curr_list = []
+            curr_list.append(p[''])
+            curr_list.append(float(p['2010']))
+            mylist.append(curr_list)
+    mylist = sorted(mylist, key = itemgetter(1), reverse=True)
+    for counter in range(0, len(mylist)):
+        if mylist[counter][0] == country:
+            return counter+1
+    return None
+
+def usage_rank_per_capita(country, information):
+    population_data = population()
+    #Create dictionary for country and population
+    dictionary = {}
+    for i in population_data:
+        if i['2008']!='NA' and i['2008']!='--' and i['2008']!=None:
+            dictionary[i['']] = float(i['2008'])
+    countries = get_countries()    
+    mylist = []
+    for p in information:
+        if p.get('2008'):
+            if p['2008']!='NA' and p['2008']!='--':
+                curr_list = []
+                curr_list.append(p[''])
+                if dictionary.get(p[''])!=0 and dictionary.get(p[''])!=None:
+                    per_capita = float(p['2008'])/dictionary.get(p[''])
+                    curr_list.append(per_capita)
+                else:
+                    curr_list.append(0)
+                mylist.append(curr_list)
+    mylist = sorted(mylist, key = itemgetter(1), reverse=True)
+    for counter in range(0, len(mylist)):
+        if mylist[counter][0] == country:
+            return counter+1
+    return None
+
+
+def usage_rank(country, information):
+    countries = get_countries()
+    mylist = []
+    for p in information:
+        if p.get('2008'):
+            if p['2008']!='NA' and p['2008']!='--':
+                curr_list = []
+                curr_list.append(p[''])
+                curr_list.append(float(p['2008']))
+                mylist.append(curr_list)
+    mylist = sorted(mylist, key = itemgetter(1), reverse=True)
+    for counter in range(0, len(mylist)):
+        if mylist[counter][0] == country:
+            return counter+1
+    return None
+
 
 def get_correct_metric(metric):
     information = []
@@ -83,7 +145,7 @@ def find_similar_countries(information, years_list, argument, country):
             similar_countries = sorted(similar_countries, key = itemgetter(1))
     return similar_countries[0:10]
 
-def percentage_total(information, years_list, argument):
+def percentage_energy(information, years_list, argument):
     counter = len(argument)-1
     relevant_year = ""
     world_total = ""
@@ -98,8 +160,18 @@ def percentage_total(information, years_list, argument):
             world_total = i[relevant_year]
             percentage = 100*float(argument[counter])/float(world_total)
             break
-    return percentage
+    return round(percentage, 6)
 
+def percentage_population(country):
+    populations = population()
+    country_pop = 0
+    world_pop = 0
+    for p in populations:
+        if p[''] == country:
+            country_pop=float(p['2010'])
+        if p[''] == 'World':
+            world_pop = float(p['2010'])
+    return round(100*country_pop/world_pop, 6)
 
 
 def natural_gas():

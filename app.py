@@ -41,10 +41,9 @@ def results():
                 if(i.get(y)):
                     if(i.get(y) != 'NA' and i.get(y) != '--'):
                         argument.append(float(i[y]))
-                        years_list.append(y)
                     else:
                         argument.append(None)
-                        years_list.append(y)
+                    years_list.append(y)
 
 
 
@@ -73,10 +72,16 @@ def results():
 
     #Time to find similar countries!
     similar_countries = helpers.find_similar_countries(information, years_list, argument, country)
-    percentage = helpers.percentage_total(information, years_list, argument)
+    percentage_energy = helpers.percentage_energy(information, years_list, argument)
+    percentage_pop = helpers.percentage_population(country)
+    population_rank = helpers.population_rank(country)
+    usage_rank = helpers.usage_rank(country, information)
+    usage_rank_per_capita = helpers.usage_rank_per_capita(country, information)
     return render_template('results.html', nation = country, argument = argument, years = years_list,
         metric = metric, metric_units = metric_units, similar = similar_countries,
-        percentage = percentage, population = population, per_capita = per_capita)
+        percentage_energy = percentage_energy, population = population, per_capita = per_capita,
+        percentage_pop = percentage_pop, population_curr = population[len(population)-1],
+        population_rank = population_rank, usage_rank = usage_rank, usage_rank_per_capita = usage_rank_per_capita)
 
 
 if __name__ == '__main__':
