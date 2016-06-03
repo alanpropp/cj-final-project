@@ -98,7 +98,7 @@ def get_correct_metric(metric):
         information = natural_gas()
     elif metric == 'biofuels':
         information = biofuels()
-    elif metric == 'energy':
+    elif metric == 'primary energy':
         information = primary_energy_consumption()
     elif metric == 'renewable electricity':
         information = renewable_electricity_consumption()
@@ -114,7 +114,7 @@ def get_units(metric):
         units = 'quadrillion Btu'
     elif metric == 'biofuels':
         units = 'thousand barrels per day'
-    elif metric == 'energy':
+    elif metric == 'primary energy':
         units = 'quadrillion Btu'
     elif metric == 'renewable electricity':
         units = 'billion kilowatt-hours'
@@ -173,6 +173,25 @@ def percentage_population(country):
             world_pop = float(p['2010'])
     return round(100*country_pop/world_pop, 6)
 
+
+def ranked_list(information):
+    result = []
+    for i in information:
+        if i.get('2008') and i['2008']!='NA' and i['2008']!='--':
+            curr_list = []
+            curr_list.append(i[''])
+            curr_list.append(float(i['2008']))
+            result.append(curr_list)
+    result = sorted(result, key = itemgetter(1), reverse = True)
+    return result
+
+def get_fun_facts(country):
+    country = country.lower()
+    country = country.replace('&', 'and')
+    country = country.replace('.', '')
+    country = country.replace(',', '')
+    country = country.replace(' ', '-')
+    return 'http://www.factmonster.com/country/' + country + '.html'
 
 def natural_gas():
     FNAME = 'drynaturalgasconsumption.csv'

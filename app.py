@@ -77,12 +77,22 @@ def results():
     population_rank = helpers.population_rank(country)
     usage_rank = helpers.usage_rank(country, information)
     usage_rank_per_capita = helpers.usage_rank_per_capita(country, information)
+    fun_facts_url = helpers.get_fun_facts(country)
     return render_template('results.html', nation = country, argument = argument, years = years_list,
         metric = metric, metric_units = metric_units, similar = similar_countries,
         percentage_energy = percentage_energy, population = population, per_capita = per_capita,
         percentage_pop = percentage_pop, population_curr = population[len(population)-1],
-        population_rank = population_rank, usage_rank = usage_rank, usage_rank_per_capita = usage_rank_per_capita)
+        population_rank = population_rank, usage_rank = usage_rank, usage_rank_per_capita = usage_rank_per_capita,
+        funfacts = fun_facts_url)
 
+@app.route("/rank")
+def rank():
+    reqargs = request.args
+    metric = reqargs.get('metric')
+    metric_units = helpers.get_units(metric)
+    information = helpers.get_correct_metric(metric)
+    ranked_list = helpers.ranked_list(information)
+    return render_template('rank.html', metric = metric, ranked_list = ranked_list, metric_units = metric_units)
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)

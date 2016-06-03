@@ -46,24 +46,26 @@ Data will be grouped and compiled/combined based on country. In a country summar
 
 
 ##Categorical variable
-*I am still unsure what my categorical variable will be - would love some advice on this one*
+Category-specific percentage of the world vs. population percentage
 
 ##Continuous variables
 The countinuous variables will be energy consumption in a variety of different resource categories, as well as all the same information but per capita
 
 #Filtering options
 Users can filter in a variety of different ways. This includes: 
+* Country
 * Energy resource type (oil, natural gas, etc.)
-* Per capita or gross consumption
 * Sorting options - alphabetical, smallest-largest or vice versa, above a certain level of consumption, etc.
 
 
 #Views and Routes
-##Map
-Hopefully I will have an interactive map, although I think this might be difficult to achieve
 
 ##Homepage select options
-The homepage will allow users to select how they want to see their data, how they want to sort it, if they want to compare countries, etc.
+The homepage will allow users to select what particular country or region they would like to view data for, and what dataset they want to see for it
 
 ##Table
-Once users select their information, they will be directed to a table with all relevant information
+On the country-specific results page, viewers can see a table with the year-by-year info for that particular metric, that country's population, and the metric per capita
+
+##Graphs
+On the country-specific results page, viewers can see graphs of the country's usage of whatever the user selected, as well as a graph of that usage per capita
+

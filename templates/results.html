@@ -122,7 +122,7 @@ $(function () {
       },
       xAxis: {
         categories: [
-                'Energy Percentage',
+                'Category-Specific Percentage',
                 'Population Percentage'
             ]
       },
@@ -164,6 +164,9 @@ $(function () {
     <h5> Rank out of all countries/regions with recorded data in usage of {{metric}}: #{{usage_rank}}</h5>
     <h5> Rank out of all countries/regions with recorded data in usage of {{metric}} per capita: #{{usage_rank_per_capita}}</h5>
 
+    <br>
+
+    <h5><i>Want more fun facts (and non-energy-related) about {{nation}}? Check out <a href = {{funfacts}}> it's fun facts page</a>! (Note: this will not work for regions, as well as certain countries with complex names)</i></h5>
     <div id="mychart">
       chartgoes here
     </div>
@@ -191,6 +194,8 @@ $(function () {
     {% endfor %}
 
     <br>
+
+    <h4>Trends over time for {{nation}}</h4>
 
       <table class="table table-condensed table-striped">
         <thead>

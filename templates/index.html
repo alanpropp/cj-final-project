@@ -10,20 +10,21 @@
 <body>
   <div class="container">
   
+  <h1><center>Worldwide Energy Data Explorer</center></h1>
 
+    <br>
     <form action="{{url_for('results')}}" method="get">
 
-    <h3>Enter in the name of a country or region to find its energy information</h3>
+    <h4>Enter in the name of a country or region to find its energy information</h4>
 
     {% include 'searchbox.html' %}
-
-    <h3>Select a metric you want to view for the country</h3>
+    <br>
+    <br>
+    <h4>and</h4>
+    <br>
+    <h4>Select a metric you want to view for the country</h4>
     {% include 'options.html' %}
 
-<!--     <h3> Select whether you would like the information per capita or total</h3>
-      <input type="radio" name="units" value="per capita" checked> Per Capita
-    <input type="radio" name="units" value="total"> Total
- -->
     <p>
 
     <input type="submit" value="Submit">
@@ -31,9 +32,39 @@
     </p>
     </form>
 
+    <h2><center>OR</center></h2>
+    <br>
+    <h4>View country-by-country ranking for specific data source (for the year 2008)</h4>
 
+ <form action="{{url_for('rank')}}" method="get">
 
+    {% include 'rank_choices.html' %}
 
+    <p>
+
+    <input type="submit" value="Submit">
+
+    </p>
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <p> <i>All data includes regions such as 'World', 'North America', 'Eurasia', etc. - consider this when viewing the countries' ranks in the world</i></p>
+    <strong>Data sources and information</strong>
+    <ul>
+      <li>Data for primary energy consumption comes from <a href = 'http://catalog.data.gov/dataset/eia-data-total-international-primary-energy-consumption-6c124'> Data.gov </a>, and runs from 1980-2008</li>
+      <li>Data for annual electricity generation comes from <a href = 'http://catalog.data.gov/dataset/annual-electricity-generation-1980-2009-dff2e'> Data.gov </a>, and runs from 1980-2009</li>
+      <li>Data for annual renewable electricity generation comes from <a href = 'http://catalog.data.gov/dataset/annual-renewable-electricity-net-generation-by-country-1980-2009-0c7a4'> Data.gov </a>, and runs from 1980-2009</li>
+      <li>Data for natural gas consumption comes from <a href = 'http://catalog.data.gov/dataset/natural-gas-consumption-by-country-1980-2009-792f50c7a4'> Data.gov </a>, and runs from 1980-2009</li>
+      <li>Data for biofuels consumption and production comes from <a href = 'http://catalog.data.gov/dataset/biofuels-consumption-and-production-by-country-2000-2010-11ff9'> Data.gov </a>, and runs from 2000-2010 (due to the fact that biofuels are just relatively recently produced in large quantities)</li>
+      <li>Data for coal consumption comes from <a href = 'http://catalog.data.gov/dataset/annual-coal-consumption-by-country-1980-2009-12cb0'> Data.gov </a>, and runs from 1980-2012</li>
+      <li>Data for population comes from <a href = 'https://catalog.data.gov/dataset/population-by-country-1980-2010-d0250'> Data.gov </a>, and runs from 1980-2012</li>
+    </ul>
+    <br>
+    <i><p>Source code available on <a href = https://github.com/alanpropp/cj-final-project> Github</a> from author Alan Propp</p>
+    </i>
 
   </div>
 </body>
