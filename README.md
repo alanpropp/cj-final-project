@@ -63,10 +63,16 @@ Users can filter in a variety of different ways. This includes:
 
 ##Homepage select options
 The homepage will allow users to select what particular country or region they would like to view data for, and what dataset they want to see for it
+![image Homepage.png](https://github.com/alanpropp/cj-final-project/blob/master/Assets/Homepage.png)
 
 ##Table
 On the country-specific results page, viewers can see a table with the year-by-year info for that particular metric, that country's population, and the metric per capita
+![image Table2.png](https://github.com/alanpropp/cj-final-project/blob/master/Assets/Table2.png)
+
 
 ##Graphs
 On the country-specific results page, viewers can see graphs of the country's usage of whatever the user selected, as well as a graph of that usage per capita. Also, on the comparing 2 countries pages, users can select two countries and compare them in overall and per capita usage
+![image Overall_graph.png](https://github.com/alanpropp/cj-final-project/blob/master/Assets/Overall_graph.png)
+![image Comparison.png](https://github.com/alanpropp/cj-final-project/blob/master/Assets/Comparison.png)
+
 
