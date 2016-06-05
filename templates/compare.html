@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search results</title>
+  <!-- <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}"> -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+  <script type="text/javascript">
+
+
+$(function () {
+    $('#mychart').highcharts({
+        title: {
+            text: "Trends over time for {{country1}} and {{country2}}",
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: Data.gov',
+            x: -20
+        },
+        xAxis: {
+            categories:   {{ years | tojson }}
+        },
+        yAxis: [{
+            title: {
+                text: '{{metric}}'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: Highcharts.getOptions().colors[1]
+            }],
+        }],
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: '{{country1}} usage',
+            data: {{ country1_data | tojson }},
+            color: '#0000ff',
+            tooltip: {
+              valueSuffix: ' {{metric_units}}'
+            }
+        },
+        {
+            name: '{{country2}} usage',
+            data: {{ country2_data | tojson }},
+            color: '#014a01',
+            tooltip: {
+              valueSuffix: ' {{metric_units}}'
+            }
+        }]
+    });
+});
+
+
+
+  </script>
+
+
+  <script type="text/javascript">
+
+
+$(function () {
+    $('#secondchart').highcharts({
+        title: {
+            text: "Trends over time for {{country1}} and {{country2}}",
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: Data.gov',
+            x: -20
+        },
+        xAxis: {
+            categories:   {{ years | tojson }}
+        },
+        yAxis: [{
+            title: {
+                text: '{{metric}}'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: Highcharts.getOptions().colors[1]
+            }],
+        }],
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: '{{country1}} usage',
+            data: {{ country1_per_capita | tojson }},
+            color: '#0000ff',
+            tooltip: {
+              valueSuffix: ' {{metric_units}}'
+            }
+        },
+        {
+            name: '{{country2}} usage',
+            data: {{ country2_per_capita | tojson }},
+            color: '#014a01',
+            tooltip: {
+              valueSuffix: ' {{metric_units}} per million people'
+            }
+        }]
+    });
+});
+
+
+
+  </script>
+
+
+
+</head>
+<body>
+
+  <div class="container">
+
+
+
+    <p>Go back to <a href="{{url_for('homepage')}}">homepage</a></p>
+
+    <br>
+
+    <div id="mychart">
+      chartgoes here
+    </div>
+
+    <div id="secondchart">
+      chartgoes here
+    </div>
+
+
+
+</body>
+</html>

@@ -11,11 +11,12 @@
   <div class="container">
   
   <h1><center>Worldwide Energy Data Explorer</center></h1>
-
-    <br>
+  <h2>Option 1: Country-specific data</h2>
+  <h4>View data in a specific metric for one particular country</h4>
     <form action="{{url_for('results')}}" method="get">
 
-    <h4>Enter in the name of a country or region to find its energy information</h4>
+
+    <h5>Enter in the name of a country or region to find its energy information</h5>
 
     {% include 'searchbox.html' %}
     <br>
@@ -34,11 +35,37 @@
 
     <h2><center>OR</center></h2>
     <br>
+    <h2>Option 2: Metric-specific ranked data</h2>
     <h4>View country-by-country ranking for specific data source (for the year 2008)</h4>
 
- <form action="{{url_for('rank')}}" method="get">
+  <form action="{{url_for('rank')}}" method="get">
 
     {% include 'rank_choices.html' %}
+
+    <p>
+
+    <input type="submit" value="Submit">
+
+    </p>
+    </form>
+
+
+    <h2><center>OR</center></h2>
+    <br>
+    <h2>Option 3: Compare 2 countries</h2>
+    <h4>Compare two countries' trends over time for a specific metric</h4>
+
+    <form action="{{url_for('compare')}}" method="get">
+
+  <h5>Enter first country you would like to compare</h5>
+    {% include 'searchbox1.html' %}
+
+  <h5>Enter second country you would like to compare</h5>
+    {% include 'searchbox2.html' %}
+
+  <h5>Select a metric for which you would like to run the comparison</h5>
+    {% include 'options.html' %}
+
 
     <p>
 

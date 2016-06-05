@@ -193,6 +193,38 @@ def get_fun_facts(country):
     country = country.replace(' ', '-')
     return 'http://www.factmonster.com/country/' + country + '.html'
 
+def get_country_data(country, information):
+    data = []
+    for i in information:
+        if i[''] == country:
+            for year in years():
+                if i.get(year):
+                    if i[year] == 'NA' or i[year] == '--':
+                        data.append(None)
+                    else:
+                        data.append(float(i[year]))
+    return data
+
+def get_years_list(information):
+    years_list = []
+    curr = information[0]
+    for year in years():
+        if curr.get(year):
+            years_list.append(year)
+    return years_list
+
+def compare_per_capita(country, country_data, years):
+    per_capita = []
+    populations = population()
+    counter = 0
+    for p in populations:
+        if p[''] == country:
+            for year in years:
+                curr_data_point = float(country_data[counter])
+                per_capita.append(curr_data_point/float(p[year]))
+                counter+=1
+    return per_capita
+
 def natural_gas():
     FNAME = 'drynaturalgasconsumption.csv'
     return get_data(filename = FNAME)

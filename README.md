@@ -56,6 +56,7 @@ Users can filter in a variety of different ways. This includes:
 * Country
 * Energy resource type (oil, natural gas, etc.)
 * Sorting options - alphabetical, smallest-largest or vice versa, above a certain level of consumption, etc.
+* Compared to other countries - pick two countries and compare them
 
 
 #Views and Routes
@@ -67,5 +68,5 @@ The homepage will allow users to select what particular country or region they w
 On the country-specific results page, viewers can see a table with the year-by-year info for that particular metric, that country's population, and the metric per capita
 
 ##Graphs
-On the country-specific results page, viewers can see graphs of the country's usage of whatever the user selected, as well as a graph of that usage per capita
+On the country-specific results page, viewers can see graphs of the country's usage of whatever the user selected, as well as a graph of that usage per capita. Also, on the comparing 2 countries pages, users can select two countries and compare them in overall and per capita usage
 

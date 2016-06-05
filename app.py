@@ -94,6 +94,30 @@ def rank():
     ranked_list = helpers.ranked_list(information)
     return render_template('rank.html', metric = metric, ranked_list = ranked_list, metric_units = metric_units)
 
+@app.route("/compare")
+def compare():
+    reqargs = request.args
+    country1 = reqargs.get('country1')
+    country2 = reqargs.get('country2')
+    if not country1 and not country2:
+        return """
+                <h1>Error</h1>
+                <p>Please enter in 2 countries/regions!</p>
+        """
+
+    metric = reqargs.get('metric')
+    information = helpers.get_correct_metric(metric)
+    metric_units = helpers.get_units(metric)
+    country1_data = helpers.get_country_data(country1, information)
+    country2_data = helpers.get_country_data(country2, information)
+    years = helpers.get_years_list(information)
+    country1_per_capita = helpers.compare_per_capita(country1, country1_data, years)
+    country2_per_capita = helpers.compare_per_capita(country2, country2_data, years)
+    return render_template('compare.html', metric = metric, country1 = country1, country2 = country2, years = years,
+        country1_data = country1_data, country2_data = country2_data, country1_per_capita = country1_per_capita,
+        country2_per_capita = country2_per_capita, metric_units = metric_units)
+
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
 
