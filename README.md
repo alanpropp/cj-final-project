@@ -46,7 +46,7 @@ Psychology studies show that the most effective way to incite behavior change is
 	4. I will incorporate [annual electricity generation](http://catalog.data.gov/dataset/annual-electricity-generation-1980-2009-dff2e) since 1980 as well for comparison's sake
 	5. Just in case it's at all useful, I may include [renewable electricity net generation data](http://catalog.data.gov/dataset/annual-renewable-electricity-net-generation-by-country-1980-2009-0c7a4).
 	6. Similar to coal consumption, there is also [natural gas production data](http://catalog.data.gov/dataset/natural-gas-consumption-by-country-1980-2009-792f5) that would be useful to compare 
-2. 	2. In addition, I want to include [population data](http://catalog.data.gov/dataset/population-by-country-1980-2010-d0250_) so that users can look at and filter by energy usage per capita if they want to. This data is provided by Data.gov but comes from the US Census Bureau. This data will be joined with the energy data, matched by country name
+2. 	In addition, I want to include [population data](http://catalog.data.gov/dataset/population-by-country-1980-2010-d0250_) so that users can look at and filter by energy usage per capita if they want to. This data is provided by Data.gov but comes from the US Census Bureau. This data will be joined with the energy data, matched by country name
 
 ##Data grouping
 Data will be grouped and compiled/combined based on country. In a country summary, the user can see all energy information for the various different resources grouped, and compared to other countries of similar status in the world
